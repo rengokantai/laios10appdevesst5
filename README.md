@@ -12,10 +12,39 @@ class ViewController:UIViewController,UITableViewDataSource{
   //two methods, in swift3
   func tableView(_ tableView:UITableView,numberOFRowsInSection section:Int)->Int{return 4}
   
-  func tableView(_ tableView:UITableView,cellForRowAt indexPath:IndexPath)->UITableCell{
+  func tableView(_ tableView:UITableView,cellForRowAt indexPath:IndexPath)->UITableViewCell{
      let cell = UITableViewCell()
      cell.textLabel?.text=""
      return cell
    }
 }
 ```
+###3 Load an array into a table view
+ViewController.swift
+```
+let data:[String]=["a","b"]
+func tableView(_ tableView:UITableView,numberOFRowsInSection section:Int)->Int{return data.count}
+
+  func tableView(_ tableView:UITableView,cellForRowAt indexPath:IndexPath)->UITableViewCell{
+     let cell = UITableViewCell()
+     cell.textLabel?.text=data[indexPath.row]
+     return cell
+   }
+```
+###4 Reuse table view cells
+iOS actually has a built in feature to recycle table view cells, and that way of recycling is accessible through the table view object, so we can call tableView, which is going to be a parameter that comes in when this method is called, so that's right here, our table view.  
+
+####00:56
+ViewController.swift
+```
+  func tableView(_ tableView:UITableView,cellForRowAt indexPath:IndexPath)->UITableViewCell{
+     let cell = tableView.dequeueReusableCell(withIdentifier:"cell",for:IndexPath)
+     cell.textLabel?.text=data[indexPath.row]
+     return cell
+   }
+```
+in storyboard, (Table View)  
+Content->Dynamic Prototype, Prorotype Cells->1  
+
+in storyboard, (Table View Cell)  
+Style=>Custom, Identifier->cell  (in code:withIdentifier:"cell")  
