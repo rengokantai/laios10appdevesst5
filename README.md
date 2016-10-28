@@ -48,3 +48,19 @@ Content->Dynamic Prototype, Prorotype Cells->1
 
 in storyboard, (Table View Cell)  
 Style=>Custom, Identifier->cell  (in code:withIdentifier:"cell")  
+
+###5 Group sections in table views
+multid array
+```
+let data:[[String]]=[["a","b"],["c","d"]]
+func tableView(_ tableView:UITableView,numberOFRowsInSection section:Int)->Int{return data[section].count}
+func numberOfSections(in tableView:UITableView)->Int{ return data.count}
+func tableView(_ tableView:UITableView,cellForRowAt indexPath:IndexPath)->UITableViewCell{
+   let cell = tableView.dequeueReusableCell(withIdentifier:"cell",for:IndexPath)
+   cell.textLabel?.text=data[indexPath.section][indexPath.row]
+   return cell
+}
+```
+####03:38
+Table View->  
+Style: Plain->Grouped
