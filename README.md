@@ -121,8 +121,18 @@ func tableView(_ tableView:UITableView,cellForRowAt indexPath:IndexPath)->UITabl
    return cell
 }
 ```
+###9 Respond to table row selection
+main.storyboard, connection inspector, drag delegate to controller
 
-
-
+####01:02
+ViewController.swift (didSelectRowAt indexPath)
+```
+class ViewController:UIViewController,UITableViewDataSource, UITableViewDelegate{
+...
+func tableView(_ tableView:UiTableView,didSelectRowAt idnexPath:IndexPath){
+  print("\(data[indexPath.section][indexPath.row])")
+}
+}
+```
 
 
