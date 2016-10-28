@@ -47,7 +47,7 @@ in storyboard, (Table View)
 Content->Dynamic Prototype, Prorotype Cells->1  
 
 in storyboard, (Table View Cell)  
-Style=>Custom, Identifier->cell  (in code:withIdentifier:"cell")  
+Style->Custom, Identifier->cell  (in code:withIdentifier:"cell")  
 
 ###5 Group sections in table views
 multid array
@@ -64,3 +64,42 @@ func tableView(_ tableView:UITableView,cellForRowAt indexPath:IndexPath)->UITabl
 ####03:38
 Table View->  
 Style: Plain->Grouped
+
+
+###6 Add section headers to table views
+```
+let data:[[String]]=[["a","b"],["c","d"]]
+let headers:[String]=["section1","section2"]
+
+func tableView(_ tableView:UITableView, titleForHeaderInSection section:Int)->String?{
+  return headers[section]
+}
+```
+###7 Add subtitles and images to cells
+####00:31
+Table View Cell->Style:Subtitle
+
+####01:20
+```
+let data:[[String]]=[["a","b"],["c","d"]]
+let subs:[[String]]=[["suba","subb"],["subc","subd"]]
+let headers:[String]=["section1","section2"]
+func tableView(_ tableView:UITableView,cellForRowAt indexPath:IndexPath)->UITableViewCell{
+   let cell = tableView.dequeueReusableCell(withIdentifier:"cell",for:IndexPath)
+   cell.textLabel?.text=data[indexPath.section][indexPath.row]
+   cell.detailTextLabel?.text=subs[indexPath.section][indexPath.row]
+   return cell
+}
+```
+####02:36 add pics
+star.png, star@2x.png, star@3x.png  
+
+
+####03:27
+Table View Cell->Image,set star(all cells same image)  
+
+####04:12
+set in code:
+```
+cell.imageView?.image = UIImage(named:"star")
+
