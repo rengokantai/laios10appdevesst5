@@ -102,4 +102,27 @@ Table View Cell->Image,set star(all cells same image)
 set in code:
 ```
 cell.imageView?.image = UIImage(named:"star")
+```
+
+###8 Create a custom table view cell
+creat new file CustomCell, subclass of UITableViewCell
+
+####01:41
+storyboard->Identity inspecor->custom class:CustomCell   
+
+####03:14
+create a  label, drag the label to CustomCell  opt+click open assitant editor  
+
+####04:16
+```
+func tableView(_ tableView:UITableView,cellForRowAt indexPath:IndexPath)->UITableViewCell{
+   let cell = tableView.dequeueReusableCell(withIdentifier:"cell",for:IndexPath) as! CustomCell
+   cell.label.text=data[indexPath.section][indexPath.row]
+   return cell
+}
+```
+
+
+
+
 
