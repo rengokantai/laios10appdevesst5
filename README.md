@@ -189,3 +189,44 @@ To adjust the title of other view controllers, meaning view controllers that are
 
 ###6 Deconstruct a master-detail app
 Split View Controller: A Split View Controller is made for wide devices like the iPhones with the plus on the end and iPads. A Split View Controller will show, for this application, a Table on the left side, and a Detail View Controller on the right side, so you can see both at the same time. 
+
+
+####03:47 some code:
+MasterViewController.swift
+```
+override func viewDidLoad(){
+self.navigationItem.leftBarButtonItem = self.editButtonItem
+let addButton = UIBarButtonItyem(barButtonSystemItem:.add, target:self,action:#selector(insertNewObject(_:)))]
+self.navigationItem.rightBarButtonItem = addButton
+if let split = self.splitViewController{
+  let controllers = split.viewControllers
+  self.detailViewController = (controllers[controllers.count-1] as! UINavagationController).topViewController as? DetailViewController
+  }
+}
+}
+
+
+func insertNewObject(_ sender:Any){
+  objects.insert(NSDate, at:0)
+  let indexPath = IndexPath(row:0,section:0)
+  self.tableView.insertRows(aat:[indexPath],with:.automatic)
+}
+
+
+override func prepare(for segue: UIStoryboardSegue,sender:Any?){
+  if segue.identifier == "showDetail"{
+    if let indexPath = self.tableView.indexPathForSelectedRow{
+      
+    }
+  }
+}
+
+//delete item
+override func tableView(_ tableView:UITableView, commit: editingStyle:UITableViewCellEditingStyle,forRowAt indexPath:IndexPath){
+  if editingStyle == .delete{
+    objects.remove(at:indexPath.row)
+    tableView.deleteRows(at:[indexPath],with:.fade)
+  } else if editingStyle == .insert{
+  }
+}
+```
