@@ -134,5 +134,39 @@ func tableView(_ tableView:UiTableView,didSelectRowAt idnexPath:IndexPath){
 }
 }
 ```
+##2. Multi-View Application
+###2 Add tabs to a tabbed application
+####00:26
+Add a View Controller
+####01:23 connect tab bar controller to third controller
+connection inspector->click(right part, first,second...)to new view controller
+
+####02:08 customize icon
+attribute inspector->use customized image.(or System item->choose system icon)
 
 
+###3 Transition between views
+create a button in first controller. right drag to second controller->show
+
+
+###4 Send data between views
+create second View Controller, custom class=CustomVC
+####02:57
+in first controller:(ViewController.swift)
+```
+override func prepare(for segue:UIStoryboardSegue, sender:Any?){
+  let newView= segue.destination as! CustomVC
+  if(segue.identifier=="name"){
+    newView.text = "updated"
+  }
+}
+```
+CustomVC.swift
+```
+var text:String=""
+@IBOutlet weak var label:UILabel!
+override func viewDisLoad(){
+  super.viewDidLoad()
+  label.text=text
+}
+```
