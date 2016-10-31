@@ -170,3 +170,22 @@ override func viewDisLoad(){
   label.text=text
 }
 ```
+
+###5 Navigation controllers
+####01:40
+main storyboard(first controller) click yellow circle,  
+Editor->Embed in->Navigation Controller  
+It will cover the buttons in all exist controllers.  
+
+####02:34 select all buttons
+size inspector->View-> Y change.  
+
+####04:00 Add title to first controller
+click to nav bar.
+
+####04:36
+To adjust the title of other view controllers, meaning view controllers that are not embedded in the Navigation Controller, you need to select a View Controller Object.(yellow circle) attribute inspector->Title
+
+
+###6 Deconstruct a master-detail app
+Split View Controller: A Split View Controller is made for wide devices like the iPhones with the plus on the end and iPads. A Split View Controller will show, for this application, a Table on the left side, and a Detail View Controller on the right side, so you can see both at the same time. 
